@@ -26,9 +26,22 @@ src/
 ├── components/
 │   ├── CharacterCard.jsx   # Tarjeta de personaje
 │   ├── LocationCard.jsx    # Tarjeta de locación
-│   └── EpisodeCard.jsx     # Tarjeta de episodio
+│   ├── EpisodeCard.jsx     # Tarjeta de episodio
+│   ├── SearchControls.jsx  # Panel de búsqueda
+│   ├── NavigationControls.jsx # Controles de navegación
+│   ├── LoadingState.jsx    # Estado de carga
+│   ├── ErrorState.jsx      # Estado de error
+│   ├── EmptyState.jsx      # Estado sin resultados
+│   ├── ResultsGrid.jsx     # Grid de resultados
+│   ├── ScrollToTopButton.jsx # Botón scroll to top
+│   └── Header.jsx          # Encabezado
 ├── hooks/
+│   ├── useSimpsonsData.js  # Hook para datos de la API
+│   ├── usePagination.js    # Hook para paginación
+│   ├── useSearch.js        # Hook para búsqueda
 │   └── useScrollTop.js     # Hook scroll to top
+├── constants/
+│   └── index.js            # Constantes de la aplicación
 ├── icons/
 │   └── index.jsx           # Iconos SVG
 ├── App.jsx                 # Componente principal

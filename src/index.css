@@ -1,0 +1,7 @@
+@import url('https://fonts.cdnfonts.com/css/homer-simpson-revised');
+@import "tailwindcss";
+
+body{
+    font-family: 'Homer Simpson Revised', sans-serif;
+}
+

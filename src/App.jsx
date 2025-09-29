@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSimpsonsData } from './hooks/useSimpsonsData'
 import { usePagination } from './hooks/usePagination'
 import { useSearch } from './hooks/useSearch'
-import { SEARCH_TYPES } from './constants'
 import useScrollTop from './hooks/useScrollTop'
 import SearchControls from './components/SearchControls'
 import NavigationControls from './components/NavigationControls'
@@ -14,10 +13,11 @@ import ScrollToTopButton from './components/ScrollToTopButton'
 
 function App () {
   const [searchType, setSearchType] = useState('characters')
+  const [itemsPerPage, setItemsPerPage] = useState(20)
 
   // Custom hooks
   const pagination = usePagination()
-  const { items, loading, error } = useSimpsonsData(searchType, pagination.page)
+  const { items, loading, error } = useSimpsonsData(searchType, pagination.page, itemsPerPage)
   const { query, setQuery, filtered } = useSearch(items, searchType)
   const { show: showScrollTop, scrollToTop } = useScrollTop(400)
 
@@ -27,9 +27,10 @@ function App () {
     pagination.resetPage()
   }
 
-  useEffect(() => {
-    console.log(Object.entries(SEARCH_TYPES))
-  }, [])
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage)
+    pagination.resetPage()
+  }
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-sky-200 via-sky-100 to-sky-50'>
@@ -40,6 +41,8 @@ function App () {
           onSearchTypeChange={handleSearchTypeChange}
           query={query}
           onQueryChange={setQuery}
+          itemsPerPage={itemsPerPage}
+          onItemsPerPageChange={handleItemsPerPageChange}
         />
 
         <NavigationControls

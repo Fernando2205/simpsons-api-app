@@ -31,6 +31,7 @@ src/
 │   ├── NavigationControls.jsx # Controles de navegación
 │   ├── LoadingState.jsx    # Estado de carga
 │   ├── ErrorState.jsx      # Estado de error
+│   ├── ItemsPerPageSelector.jsx # Selector de items mostrados por página
 │   ├── EmptyState.jsx      # Estado sin resultados
 │   ├── ResultsGrid.jsx     # Grid de resultados
 │   └── ScrollToTopButton.jsx # Botón scroll to top

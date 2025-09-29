@@ -33,8 +33,7 @@ src/
 │   ├── ErrorState.jsx      # Estado de error
 │   ├── EmptyState.jsx      # Estado sin resultados
 │   ├── ResultsGrid.jsx     # Grid de resultados
-│   ├── ScrollToTopButton.jsx # Botón scroll to top
-│   └── Header.jsx          # Encabezado
+│   └── ScrollToTopButton.jsx # Botón scroll to top
 ├── hooks/
 │   ├── useSimpsonsData.js  # Hook para datos de la API
 │   ├── usePagination.js    # Hook para paginación

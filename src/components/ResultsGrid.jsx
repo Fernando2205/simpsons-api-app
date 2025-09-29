@@ -2,11 +2,12 @@ import { SEARCH_TYPES } from '../constants'
 import CharacterCard from './CharacterCard'
 import LocationCard from './LocationCard'
 import EpisodeCard from './EpisodeCard'
+import { useCallback } from 'react'
 
 export default function ResultsGrid ({ items, searchType, query }) {
   const currentConfig = SEARCH_TYPES[searchType]
 
-  const renderCard = (item) => {
+  const renderCard = useCallback((item) => {
     switch (searchType) {
       case 'characters':
         return <CharacterCard key={item.id} c={item} />
@@ -17,7 +18,7 @@ export default function ResultsGrid ({ items, searchType, query }) {
       default:
         return null
     }
-  }
+  }, [searchType])
 
   return (
     <>

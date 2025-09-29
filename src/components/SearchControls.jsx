@@ -1,10 +1,12 @@
 import { SEARCH_TYPES } from '../constants'
-
+import ItemsPerPageSelector from './ItemsPerPageSelector'
 export default function SearchControls ({
   searchType,
   onSearchTypeChange,
   query,
-  onQueryChange
+  onQueryChange,
+  itemsPerPage,
+  onItemsPerPageChange
 }) {
   const currentConfig = SEARCH_TYPES[searchType]
 
@@ -27,6 +29,8 @@ export default function SearchControls ({
           ))}
         </select>
       </div>
+
+      <ItemsPerPageSelector itemsPerPage={itemsPerPage} onItemsPerPageChange={onItemsPerPageChange} />
 
       {/* Barra de búsqueda */}
       <div className='mb-6'>

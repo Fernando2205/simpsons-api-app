@@ -31,7 +31,7 @@ export function useSimpsonsData (searchType, page, itemsPerPage = API_PAGE_SIZE)
         const startApiPage = Math.floor(startIndex / API_PAGE_SIZE) + 1
         const endApiPage = Math.floor((endIndex - 1) / API_PAGE_SIZE) + 1
 
-        console.log(`DEBUG Página ${page}, Items ${itemsPerPage}:`)
+        console.log(`-------- DEBUG Página ${page}, Items ${itemsPerPage} --------`)
         console.log(`- Necesito items desde indice ${startIndex} hasta ${endIndex - 1}`)
         console.log(`- Paginas de la API necesarias: ${startApiPage} a ${endApiPage}`)
         const allItems = []
@@ -41,7 +41,6 @@ export function useSimpsonsData (searchType, page, itemsPerPage = API_PAGE_SIZE)
         for (let p = startApiPage; p <= endApiPage; p++) {
           if (cacheRef.current[p]) {
             console.log(`- Página ${p} de la API: En cache (${cacheRef.current[p].length} items)`)
-            allItems.push(...cacheRef.current[p])
           } else {
             console.log(`- Página ${p} de la API no está cacheada. Relizando fetch...`)
             pagesNeeded.push(p)
@@ -61,17 +60,16 @@ export function useSimpsonsData (searchType, page, itemsPerPage = API_PAGE_SIZE)
         }
 
         // Construir array final a partir del cache
-        const finalItems = []
         for (let p = startApiPage; p <= endApiPage; p++) {
           if (cacheRef.current[p]) {
-            finalItems.push(...cacheRef.current[p])
+            allItems.push(...cacheRef.current[p])
           }
         }
 
         const offsetInData = startIndex % API_PAGE_SIZE
 
-        const slicedItems = finalItems.slice(offsetInData, offsetInData + itemsPerPage)
-        console.log(`- Total disponible: ${finalItems.length} items`)
+        const slicedItems = allItems.slice(offsetInData, offsetInData + itemsPerPage)
+        console.log(`- Total disponible: ${allItems.length} items`)
         console.log(`- Mostrando: ${slicedItems.length} items (offset ${offsetInData})`)
         console.log('- Cache actual:', Object.keys(cacheRef.current).map(k => `Página ${k}: ${cacheRef.current[k].length} items`))
 

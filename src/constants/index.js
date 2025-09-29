@@ -15,3 +15,6 @@ export const SEARCH_TYPES = {
     searchField: 'name'
   }
 }
+
+export const API_PAGE_SIZE = 20
+export const ITEMS_OPTIONS = [10, 20, 30, 60, 90]
